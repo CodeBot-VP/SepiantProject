@@ -1,0 +1,48 @@
+
+entity Theatres {
+	theatreName String,
+    theatreCity String,
+    movieShows List
+}
+
+entity MovieShow {
+	movieName String,
+	showTime Date,
+    seats List
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Movie {
+	theatres List,
+	genre String,
+	title String
+}
+
+entity Seat {
+	seatNumber String,
+    status String
+}
+
+enum SeatStatus {
+    AVAILABLE, BOOKED
+}
+
+relationship ManyToMany {
+	Movie{movies} to Theatres
+}
+
+relationship OneToMany {
+	Theatres{movieName} to MovieShow
+}
+
+relationship OneToOne {
+	Seat{seat} to MovieShow
+}
+
+
+
+service all with serviceImpl 
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
